@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TestBank.Models.CustomerAccount>
+@{ 
+    ViewBag.Title = "Grid";
+}
+
+
+<div style="height:200px; overflow:auto; width:1100px" class="container ">
+    
+        <table style="width:100%" class="col-md-8 table-bordered table-striped table-condensed table-fixed">
+            <thead >
+                <tr>
+                    <th class="col" style="position:-webkit-sticky; position:sticky ;top:0;background-color:white">
+                        @Html.DisplayNameFor(model => model.AccNum)
+                    </th>
+                    <th class="col" style="position: -webkit-sticky; position: sticky; top: 0; background-color: white">
+                        @Html.DisplayNameFor(model => model.AccountType)
+                    </th>
+                    <th class="col" style="position: -webkit-sticky; position: sticky; top: 0; background-color: white">
+                        @Html.DisplayNameFor(model => model.AccountSubType)
+                    </th>
+                    <th class="col" style="position: -webkit-sticky; position: sticky; top: 0; background-color: white">
+                        @Html.DisplayNameFor(model => model.CustomerDetail.FirstName)
+                    </th>
+                    <th class="col" style="position: -webkit-sticky; position: sticky; top: 0; background-color: white">
+                        @Html.DisplayName("                 ")
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td class="col">
+                            @Html.DisplayFor(modelItem => item.AccNum)
+                        </td>
+                        <td class="col">
+                            @Html.DisplayFor(modelItem => item.AccountType)
+                        </td>
+                        <td class="col">
+                            @Html.DisplayFor(modelItem => item.AccountSubType)
+                        </td>
+
+                        <td class="col" >
+                            @Html.DisplayFor(modelItem => item.CustomerDetail.FirstName)
+                        </td>
+                        <td class="col">
+                            @if (item.AccountType == "Savings")
+                            {
+                            <div style="display:flex;justify-content:space-evenly;align-items:center">
+                                <div>
+                                    <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Edit", "SavingAccountDetails", new { id = item.AccNum })'">Update</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Details", "SavingAccountDetails", new { id = item.AccNum })'">Check Details</button>
+                                </div>
+                                <div>
+                                     <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Delete", "CustomerAccounts", new { id = item.AccNum })'">Delete</button>
+                                </div>
+                                    <div>
+                                        <button type="button" class="btn btn-default " onclick=" location.href = '@Url.Action("Create", "SavingAccountTxnHistories", new { id = item.AccNum})' ">DEPOSIT</button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-default " onclick=" location.href = '@Url.Action("Withdraw", "SavingAccountTxnHistories", new { id = item.AccNum })' ">WITHDRAW</button>
+                                    </div>
+                                
+                            </div>
+                            }
+                            else
+                            { <div class="row">
+                                    <div class="col-xs-3 ">
+                                        <button type="button" style="padding:5% 20% 5% 20%" class="btn btn-default" onclick="location.href = '@Url.Action("Edit", "LoanAccountDetails", new { id = item.AccNum })'">Update</button>
+                                    </div>
+                                    <div class="col-xs-3 ">
+                                        <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Details", "LoanAccountDetails", new { id = item.AccNum })'">Check Details</button>
+                                    </div>
+                                    <div class="col-xs-3 col-xs-offset-1">
+                                        <button type="button" class="btn btn-default" onclick="location.href = '@Url.Action("Delete", "LoanAccountDetails", new { id = item.AccNum })'">Delete</button>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+        </div>
+
+

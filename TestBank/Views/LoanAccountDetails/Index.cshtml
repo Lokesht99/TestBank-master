@@ -1,0 +1,99 @@
+﻿@model IEnumerable<TestBank.Models.LoanAccountDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IFSCcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalanceAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Principle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateOfInterest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalLoanAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyPayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanAccountType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanIssuedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanPayDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerAccount.AccountType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IFSCcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalanceAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Principle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateOfInterest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanDuration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalLoanAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanAccountType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanIssuedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanPayDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerAccount.AccountType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AccNum }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AccNum }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AccNum })
+        </td>
+    </tr>
+}
+
+</table>
